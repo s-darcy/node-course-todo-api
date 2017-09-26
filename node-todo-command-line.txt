@@ -1,0 +1,976 @@
+rv-clt-sdarcy [sdarcy] ~ (master) : ./mongo
+-bash: ./mongo: is a directory
+rv-clt-sdarcy [sdarcy] ~ (master) : cd ~/mongo/bin
+rv-clt-sdarcy [sdarcy] ~/mongo/bin (master) : ./mongo
+MongoDB shell version v3.4.9
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.9
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	http://docs.mongodb.org/
+Questions? Try the support group
+	http://groups.google.com/group/mongodb-user
+Server has startup warnings:
+2017-09-25T22:01:19.470-0400 I CONTROL  [initandlisten]
+2017-09-25T22:01:19.470-0400 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-09-25T22:01:19.470-0400 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-09-25T22:01:19.470-0400 I CONTROL  [initandlisten]
+> db.Todos.insert({text: 'Film new node course'})
+WriteResult({ "nInserted" : 1 })
+> db.Todos.find()
+{ "_id" : ObjectId("59c9b602744e74ce843177b1"), "text" : "Film new node course" }
+> ^C
+bye
+rv-clt-sdarcy [sdarcy] ~/mongo/bin (master) : cd ~
+rv-clt-sdarcy [sdarcy] ~ (master) : mkdir node-todo-api
+rv-clt-sdarcy [sdarcy] ~ (master) : cd node-todo-api
+rv-clt-sdarcy [sdarcy] ~/node-todo-api (master) : npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (todo-api)
+version: (1.0.0)
+description:
+entry point: (index.js)
+test command:
+git repository:
+keywords:
+author:
+license: (ISC)
+About to write to /Users/sdarcy/node-todo-api/package.json:
+
+{
+  "name": "todo-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+
+Is this ok? (yes)
+rv-clt-sdarcy [sdarcy] ~/node-todo-api (master) : cd Desktop
+-bash: cd: Desktop: No such file or directory
+rv-clt-sdarcy [sdarcy] ~/node-todo-api (master) : cd ~
+rv-clt-sdarcy [sdarcy] ~ (master) : cd Desktop
+rv-clt-sdarcy [sdarcy] ~/Desktop (master) : cd node-todo-api
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : npm i mongodb@2.2.5 --save
+npm WARN deprecated mongodb@2.2.5: Please upgrade to 2.2.19 or higher
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN todo-api@1.0.0 No description
+npm WARN todo-api@1.0.0 No repository field.
+
++ mongodb@2.2.5
+added 12 packages in 17.497s
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-connect.js
+/Users/sdarcy/Desktop/node-todo-api/playground/mongodb-connect.js:1
+(function (exports, require, module, __filename, __dirname) { const MongoClient = require(mongodb).MongoClient;
+                                                                                          ^
+
+ReferenceError: mongodb is not defined
+    at Object.<anonymous> (/Users/sdarcy/Desktop/node-todo-api/playground/mongodb-connect.js:1:91)
+    at Module._compile (module.js:624:30)
+    at Object.Module._extensions..js (module.js:635:10)
+    at Module.load (module.js:545:32)
+    at tryModuleLoad (module.js:508:12)
+    at Function.Module._load (module.js:500:3)
+    at Function.Module.runMain (module.js:665:10)
+    at startup (bootstrap_node.js:201:16)
+    at bootstrap_node.js:626:3
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-connect.js
+Connected to MongoDB server
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-connect.js
+Connected to MongoDB server
+/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/utils.js:98
+    process.nextTick(function() { throw err; });
+                                  ^
+
+ReferenceError: result is not defined
+    at db.collection.insertOne (/Users/sdarcy/Desktop/node-todo-api/playground/mongodb-connect.js:17:36)
+    at /Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/collection.js:423:18
+    at handleCallback (/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/utils.js:96:12)
+    at Object.cb (/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/collection.js:733:5)
+    at /Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb-core/lib/connection/pool.js:446:18
+    at authenticateStragglers (/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb-core/lib/connection/pool.js:402:16)
+    at Connection.messageHandler (/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb-core/lib/connection/pool.js:424:5)
+    at Socket.<anonymous> (/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb-core/lib/connection/connection.js:294:22)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-connect.js
+Connected to MongoDB server
+[
+  {
+    "text": "Something to do",
+    "completed": false,
+    "_id": "59c9c472c4ed4776623d9854"
+  }
+]
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-connect.js
+Connected to MongoDB server
+[
+  {
+    "text": "Something to do",
+    "completed": false,
+    "_id": "59c9c56b64a27f76d7c37eb9"
+  }
+]
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-connect.js
+Connected to MongoDB server
+[
+  {
+    "name": "Shane",
+    "age": 32,
+    "location": "Charlotte",
+    "_id": "59c9c6f0aa325777977207b6"
+  }
+]
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-connect.js
+shane
+Connected to MongoDB server
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-connect.js
+59c9cac590378079b0bcd9ef
+Connected to MongoDB server
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+/Users/sdarcy/Desktop/node-todo-api/playground/mongodb-find.js:12
+        console.log(JSON.stringify(docs, undefined 2));
+                                         ^^^^^^^^^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:74:10)
+    at Object.runInThisContext (vm.js:116:10)
+    at Module._compile (module.js:588:28)
+    at Object.Module._extensions..js (module.js:635:10)
+    at Module.load (module.js:545:32)
+    at tryModuleLoad (module.js:508:12)
+    at Function.Module._load (module.js:500:3)
+    at Function.Module.runMain (module.js:665:10)
+    at startup (bootstrap_node.js:201:16)
+    at bootstrap_node.js:626:3
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+Todos
+(node:32822) UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 1): ReferenceError: docs is not defined
+(node:32822) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+^[[A
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+Todos
+[
+  {
+    "_id": "59c9c3bdef96d576110ffb66",
+    "text": "Something to do",
+    "completed": false
+  },
+  {
+    "_id": "59c9c472c4ed4776623d9854",
+    "text": "Something to do",
+    "completed": false
+  },
+  {
+    "_id": "59c9c56b64a27f76d7c37eb9",
+    "text": "Something to do",
+    "completed": false
+  },
+  {
+    "_id": "59c9c6f0aa325777977207b6",
+    "name": "Shane",
+    "age": 32,
+    "location": "Charlotte"
+  },
+  {
+    "_id": "59ca93e59a4401546f0711ce",
+    "text": "Walkt the dog",
+    "completed": false
+  }
+]
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+Todos
+[
+  {
+    "_id": "59c9c3bdef96d576110ffb66",
+    "text": "Something to do",
+    "completed": false
+  },
+  {
+    "_id": "59c9c472c4ed4776623d9854",
+    "text": "Something to do",
+    "completed": false
+  },
+  {
+    "_id": "59c9c56b64a27f76d7c37eb9",
+    "text": "Something to do",
+    "completed": false
+  },
+  {
+    "_id": "59c9c6f0aa325777977207b6",
+    "name": "Shane",
+    "age": 32,
+    "location": "Charlotte"
+  },
+  {
+    "_id": "59ca93e59a4401546f0711ce",
+    "text": "Walkt the dog",
+    "completed": true
+  }
+]
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+Todos
+[]
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+Todos
+[
+  {
+    "_id": "59c9c3bdef96d576110ffb66",
+    "text": "Something to do",
+    "completed": false
+  },
+  {
+    "_id": "59c9c472c4ed4776623d9854",
+    "text": "Something to do",
+    "completed": false
+  },
+  {
+    "_id": "59c9c56b64a27f76d7c37eb9",
+    "text": "Something to do",
+    "completed": false
+  }
+]
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+Todos
+[
+  {
+    "_id": "59c9c472c4ed4776623d9854",
+    "text": "Something to do",
+    "completed": false
+  }
+]
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+Todos count: 5
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:222
+          throw err
+          ^
+
+TypeError: db.collections(...).find is not a function
+    at MongoClient.connect (/Users/sdarcy/Desktop/node-todo-api/playground/mongodb-find.js:25:29)
+    at connectCallback (/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:300:5)
+    at /Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:219:11
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:222
+          throw err
+          ^
+
+TypeError: db.collection(...).find(...).then is not a function
+    at MongoClient.connect (/Users/sdarcy/Desktop/node-todo-api/playground/mongodb-find.js:27:8)
+    at connectCallback (/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:300:5)
+    at /Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:219:11
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) :
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:222
+          throw err
+          ^
+
+TypeError: db.collection(...).find(...).then is not a function
+    at MongoClient.connect (/Users/sdarcy/Desktop/node-todo-api/playground/mongodb-find.js:27:8)
+    at connectCallback (/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:300:5)
+    at /Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:219:11
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+Users.name
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+name
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+[]
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+[]
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+[]
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+[]
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-find.js
+Connected to MongoDB server
+[
+  {
+    "_id": "59c9c6f0aa325777977207b6",
+    "name": "Jenn",
+    "age": 32,
+    "location": "Charlotte"
+  }
+]
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : git init
+Initialized empty Git repository in /Users/sdarcy/Desktop/node-todo-api/.git/
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api : git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.vscode/
+	node_modules/
+	package-lock.json
+	package.json
+	playground/
+
+nothing added to commit but untracked files present (use "git add" to track)
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api : git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.vscode/
+	node_modules/
+	package-lock.json
+	package.json
+	playground/
+
+nothing added to commit but untracked files present (use "git add" to track)
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api : git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.vscode/
+	node_modules/
+	package-lock.json
+	package.json
+	playground/
+
+nothing added to commit but untracked files present (use "git add" to track)
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api : git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.vscode/
+	node_modules/
+	package-lock.json
+	package.json
+	playground/
+
+nothing added to commit but untracked files present (use "git add" to track)
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api : git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.gitignore
+	package.json
+	playground/
+
+nothing added to commit but untracked files present (use "git add" to track)
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api : git add .
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api : git commit -m 'Init commit'
+[master (root-commit) 3d7b724] Init commit
+ 4 files changed, 89 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 package.json
+ create mode 100644 playground/mongodb-connect.js
+ create mode 100644 playground/mongodb-find.js
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : git remote add origin https://github.com/s-darcy/node-course-todo-api.git
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : git push -u origin master
+Counting objects: 7, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (7/7), 1.43 KiB | 0 bytes/s, done.
+Total 7 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/s-darcy/node-course-todo-api.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-delete.js
+Connected to MongoDB server
+(node:34881) UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 1): ReferenceError: result is not defined
+(node:34881) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+^[[A
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-delete.js
+Connected to MongoDB server
+CommandResult {
+  result: { n: 0, ok: 1 },
+  connection:
+   Connection {
+     domain: null,
+     _events:
+      { error: [Object],
+        close: [Object],
+        timeout: [Object],
+        parseError: [Object] },
+     _eventsCount: 4,
+     _maxListeners: undefined,
+     options:
+      { host: 'localhost',
+        port: 27017,
+        size: 5,
+        connectionTimeout: 30000,
+        socketTimeout: 30000,
+        keepAlive: true,
+        keepAliveInitialDelay: 0,
+        noDelay: true,
+        ssl: false,
+        checkServerIdentity: false,
+        ca: null,
+        cert: null,
+        key: null,
+        passPhrase: null,
+        rejectUnauthorized: false,
+        promoteLongs: true,
+        reconnect: true,
+        reconnectInterval: 1000,
+        reconnectTries: 30,
+        domainsEnabled: false,
+        disconnectHandler: [Object],
+        cursorFactory: [Object],
+        emitError: true,
+        socketOptions: {},
+        clientInfo: [Object],
+        readPreference: [Object],
+        promiseLibrary: [Function: Promise],
+        bson: BSON {} },
+     id: 0,
+     logger: Logger { className: 'Connection' },
+     bson: BSON {},
+     tag: undefined,
+     messageHandler: [Function],
+     maxBsonMessageSize: 67108864,
+     port: 27017,
+     host: 'localhost',
+     keepAlive: true,
+     keepAliveInitialDelay: 0,
+     noDelay: true,
+     connectionTimeout: 30000,
+     socketTimeout: 30000,
+     destroyed: false,
+     domainSocket: false,
+     singleBufferSerializtion: true,
+     serializationFunction: 'toBinUnified',
+     ca: null,
+     cert: null,
+     key: null,
+     passphrase: null,
+     ssl: false,
+     rejectUnauthorized: false,
+     checkServerIdentity: false,
+     responseOptions: { promoteLongs: true },
+     flushing: false,
+     queue: [],
+     connection:
+      Socket {
+        connecting: false,
+        _hadError: false,
+        _handle: [Object],
+        _parent: null,
+        _host: 'localhost',
+        _readableState: [Object],
+        readable: true,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 8,
+        _maxListeners: undefined,
+        _writableState: [Object],
+        writable: true,
+        allowHalfOpen: false,
+        _bytesDispatched: 190,
+        _sockname: null,
+        _pendingData: null,
+        _pendingEncoding: '',
+        server: null,
+        _server: null,
+        _idleTimeout: 30000,
+        _idleNext: [Object],
+        _idlePrev: [Object],
+        _idleStart: 160,
+        _destroyed: false,
+        read: [Function],
+        _consuming: true,
+        [Symbol(asyncId)]: 5,
+        [Symbol(bytesRead)]: 0,
+        [Symbol(asyncId)]: 8,
+        [Symbol(triggerAsyncId)]: 1 },
+     writeStream: null,
+     workItem: null,
+     buffer: null,
+     sizeOfMessage: 0,
+     bytesRead: 0,
+     stubBuffer: null },
+  message:
+   Response {
+     parsed: true,
+     index: 60,
+     raw: <Buffer 3c 00 00 00 cf 04 00 00 01 00 00 00 01 00 00 00 08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 18 00 00 00 10 6e 00 00 00 00 00 01 6f 6b ... >,
+     data: <Buffer 3c 00 00 00 cf 04 00 00 01 00 00 00 01 00 00 00 08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 18 00 00 00 10 6e 00 00 00 00 00 01 6f 6b ... >,
+     bson: BSON {},
+     opts: { promoteLongs: true },
+     length: 60,
+     requestId: 1231,
+     responseTo: 1,
+     responseFlags: 8,
+     cursorId: Long { _bsontype: 'Long', low_: 0, high_: 0 },
+     startingFrom: 0,
+     numberReturned: 1,
+     documents: [ [Object] ],
+     cursorNotFound: false,
+     queryFailure: false,
+     shardConfigStale: false,
+     awaitCapable: true,
+     promoteLongs: true },
+  deletedCount: 0 }
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-delete.js
+Connected to MongoDB server
+CommandResult {
+  result: { n: 3, ok: 1 },
+  connection:
+   Connection {
+     domain: null,
+     _events:
+      { error: [Object],
+        close: [Object],
+        timeout: [Object],
+        parseError: [Object] },
+     _eventsCount: 4,
+     _maxListeners: undefined,
+     options:
+      { host: 'localhost',
+        port: 27017,
+        size: 5,
+        connectionTimeout: 30000,
+        socketTimeout: 30000,
+        keepAlive: true,
+        keepAliveInitialDelay: 0,
+        noDelay: true,
+        ssl: false,
+        checkServerIdentity: false,
+        ca: null,
+        cert: null,
+        key: null,
+        passPhrase: null,
+        rejectUnauthorized: false,
+        promoteLongs: true,
+        reconnect: true,
+        reconnectInterval: 1000,
+        reconnectTries: 30,
+        domainsEnabled: false,
+        disconnectHandler: [Object],
+        cursorFactory: [Object],
+        emitError: true,
+        socketOptions: {},
+        clientInfo: [Object],
+        readPreference: [Object],
+        promiseLibrary: [Function: Promise],
+        bson: BSON {} },
+     id: 0,
+     logger: Logger { className: 'Connection' },
+     bson: BSON {},
+     tag: undefined,
+     messageHandler: [Function],
+     maxBsonMessageSize: 67108864,
+     port: 27017,
+     host: 'localhost',
+     keepAlive: true,
+     keepAliveInitialDelay: 0,
+     noDelay: true,
+     connectionTimeout: 30000,
+     socketTimeout: 30000,
+     destroyed: false,
+     domainSocket: false,
+     singleBufferSerializtion: true,
+     serializationFunction: 'toBinUnified',
+     ca: null,
+     cert: null,
+     key: null,
+     passphrase: null,
+     ssl: false,
+     rejectUnauthorized: false,
+     checkServerIdentity: false,
+     responseOptions: { promoteLongs: true },
+     flushing: false,
+     queue: [],
+     connection:
+      Socket {
+        connecting: false,
+        _hadError: false,
+        _handle: [Object],
+        _parent: null,
+        _host: 'localhost',
+        _readableState: [Object],
+        readable: true,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 8,
+        _maxListeners: undefined,
+        _writableState: [Object],
+        writable: true,
+        allowHalfOpen: false,
+        _bytesDispatched: 190,
+        _sockname: null,
+        _pendingData: null,
+        _pendingEncoding: '',
+        server: null,
+        _server: null,
+        _idleTimeout: 30000,
+        _idleNext: [Object],
+        _idlePrev: [Object],
+        _idleStart: 169,
+        _destroyed: false,
+        read: [Function],
+        _consuming: true,
+        [Symbol(asyncId)]: 5,
+        [Symbol(bytesRead)]: 0,
+        [Symbol(asyncId)]: 8,
+        [Symbol(triggerAsyncId)]: 1 },
+     writeStream: null,
+     workItem: null,
+     buffer: null,
+     sizeOfMessage: 0,
+     bytesRead: 0,
+     stubBuffer: null },
+  message:
+   Response {
+     parsed: true,
+     index: 60,
+     raw: <Buffer 3c 00 00 00 92 05 00 00 01 00 00 00 01 00 00 00 08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 18 00 00 00 10 6e 00 03 00 00 00 01 6f 6b ... >,
+     data: <Buffer 3c 00 00 00 92 05 00 00 01 00 00 00 01 00 00 00 08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 18 00 00 00 10 6e 00 03 00 00 00 01 6f 6b ... >,
+     bson: BSON {},
+     opts: { promoteLongs: true },
+     length: 60,
+     requestId: 1426,
+     responseTo: 1,
+     responseFlags: 8,
+     cursorId: Long { _bsontype: 'Long', low_: 0, high_: 0 },
+     startingFrom: 0,
+     numberReturned: 1,
+     documents: [ [Object] ],
+     cursorNotFound: false,
+     queryFailure: false,
+     shardConfigStale: false,
+     awaitCapable: true,
+     promoteLongs: true },
+  deletedCount: 3 }
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-delete.js
+Connected to MongoDB server
+CommandResult {
+  result: { n: 1, ok: 1 },
+  connection:
+   Connection {
+     domain: null,
+     _events:
+      { error: [Object],
+        close: [Object],
+        timeout: [Object],
+        parseError: [Object] },
+     _eventsCount: 4,
+     _maxListeners: undefined,
+     options:
+      { host: 'localhost',
+        port: 27017,
+        size: 5,
+        connectionTimeout: 30000,
+        socketTimeout: 30000,
+        keepAlive: true,
+        keepAliveInitialDelay: 0,
+        noDelay: true,
+        ssl: false,
+        checkServerIdentity: false,
+        ca: null,
+        cert: null,
+        key: null,
+        passPhrase: null,
+        rejectUnauthorized: false,
+        promoteLongs: true,
+        reconnect: true,
+        reconnectInterval: 1000,
+        reconnectTries: 30,
+        domainsEnabled: false,
+        disconnectHandler: [Object],
+        cursorFactory: [Object],
+        emitError: true,
+        socketOptions: {},
+        clientInfo: [Object],
+        readPreference: [Object],
+        promiseLibrary: [Function: Promise],
+        bson: BSON {} },
+     id: 0,
+     logger: Logger { className: 'Connection' },
+     bson: BSON {},
+     tag: undefined,
+     messageHandler: [Function],
+     maxBsonMessageSize: 67108864,
+     port: 27017,
+     host: 'localhost',
+     keepAlive: true,
+     keepAliveInitialDelay: 0,
+     noDelay: true,
+     connectionTimeout: 30000,
+     socketTimeout: 30000,
+     destroyed: false,
+     domainSocket: false,
+     singleBufferSerializtion: true,
+     serializationFunction: 'toBinUnified',
+     ca: null,
+     cert: null,
+     key: null,
+     passphrase: null,
+     ssl: false,
+     rejectUnauthorized: false,
+     checkServerIdentity: false,
+     responseOptions: { promoteLongs: true },
+     flushing: false,
+     queue: [],
+     connection:
+      Socket {
+        connecting: false,
+        _hadError: false,
+        _handle: [Object],
+        _parent: null,
+        _host: 'localhost',
+        _readableState: [Object],
+        readable: true,
+        domain: null,
+        _events: [Object],
+        _eventsCount: 8,
+        _maxListeners: undefined,
+        _writableState: [Object],
+        writable: true,
+        allowHalfOpen: false,
+        _bytesDispatched: 190,
+        _sockname: null,
+        _pendingData: null,
+        _pendingEncoding: '',
+        server: null,
+        _server: null,
+        _idleTimeout: 30000,
+        _idleNext: [Object],
+        _idlePrev: [Object],
+        _idleStart: 163,
+        _destroyed: false,
+        read: [Function],
+        _consuming: true,
+        [Symbol(asyncId)]: 5,
+        [Symbol(bytesRead)]: 0,
+        [Symbol(asyncId)]: 8,
+        [Symbol(triggerAsyncId)]: 1 },
+     writeStream: null,
+     workItem: null,
+     buffer: null,
+     sizeOfMessage: 0,
+     bytesRead: 0,
+     stubBuffer: null },
+  message:
+   Response {
+     parsed: true,
+     index: 60,
+     raw: <Buffer 3c 00 00 00 d0 05 00 00 01 00 00 00 01 00 00 00 08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 18 00 00 00 10 6e 00 01 00 00 00 01 6f 6b ... >,
+     data: <Buffer 3c 00 00 00 d0 05 00 00 01 00 00 00 01 00 00 00 08 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 18 00 00 00 10 6e 00 01 00 00 00 01 6f 6b ... >,
+     bson: BSON {},
+     opts: { promoteLongs: true },
+     length: 60,
+     requestId: 1488,
+     responseTo: 1,
+     responseFlags: 8,
+     cursorId: Long { _bsontype: 'Long', low_: 0, high_: 0 },
+     startingFrom: 0,
+     numberReturned: 1,
+     documents: [ [Object] ],
+     cursorNotFound: false,
+     queryFailure: false,
+     shardConfigStale: false,
+     awaitCapable: true,
+     promoteLongs: true },
+  deletedCount: 1 }
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-delete.js
+/Users/sdarcy/Desktop/node-todo-api/playground/mongodb-delete.js:24
+    });
+     ^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:74:10)
+    at Object.runInThisContext (vm.js:116:10)
+    at Module._compile (module.js:588:28)
+    at Object.Module._extensions..js (module.js:635:10)
+    at Module.load (module.js:545:32)
+    at tryModuleLoad (module.js:508:12)
+    at Function.Module._load (module.js:500:3)
+    at Function.Module.runMain (module.js:665:10)
+    at startup (bootstrap_node.js:201:16)
+    at bootstrap_node.js:626:3
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-delete.js
+/Users/sdarcy/Desktop/node-todo-api/playground/mongodb-delete.js:24
+    });
+     ^
+
+SyntaxError: missing ) after argument list
+    at createScript (vm.js:74:10)
+    at Object.runInThisContext (vm.js:116:10)
+    at Module._compile (module.js:588:28)
+    at Object.Module._extensions..js (module.js:635:10)
+    at Module.load (module.js:545:32)
+    at tryModuleLoad (module.js:508:12)
+    at Function.Module._load (module.js:500:3)
+    at Function.Module.runMain (module.js:665:10)
+    at startup (bootstrap_node.js:201:16)
+    at bootstrap_node.js:626:3
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-delete.js
+Connected to MongoDB server
+{ lastErrorObject: { n: 1 },
+  value:
+   { _id: 59c9c3bdef96d576110ffb66,
+     text: 'Something to do',
+     completed: false },
+  ok: 1 }
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : git init
+Reinitialized existing Git repository in /Users/sdarcy/Desktop/node-todo-api/.git/
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : git add .
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : git commit -m "added delete"
+[master 61245a2] added delete
+ 1 file changed, 26 insertions(+)
+ create mode 100644 playground/mongodb-delete.js
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : git push -u origin master
+Counting objects: 4, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 709 bytes | 0 bytes/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/s-darcy/node-course-todo-api.git
+   3d7b724..61245a2  master -> master
+Branch master set up to track remote branch master from origin.
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-update.js
+Connected to MongoDB server
+{ lastErrorObject: { updatedExisting: true, n: 1 },
+  value: { _id: 59c9c56b64a27f76d7c37eb9, name: 'Mike', completed: true },
+  ok: 1 }
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-update.js
+Connected to MongoDB server
+/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:222
+          throw err
+          ^
+
+TypeError: db.collection(...).findOneAndUdate is not a function
+    at MongoClient.connect (/Users/sdarcy/Desktop/node-todo-api/playground/mongodb-update.js:22:28)
+    at connectCallback (/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:300:5)
+    at /Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:219:11
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-update.js
+Connected to MongoDB server
+/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:222
+          throw err
+          ^
+
+TypeError: db.collection(...).findOneAndUdpate is not a function
+    at MongoClient.connect (/Users/sdarcy/Desktop/node-todo-api/playground/mongodb-update.js:22:28)
+    at connectCallback (/Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:300:5)
+    at /Users/sdarcy/Desktop/node-todo-api/node_modules/mongodb/lib/mongo_client.js:219:11
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : node playground/mongodb-update.js
+Connected to MongoDB server
+{ lastErrorObject: { updatedExisting: true, n: 1 },
+  value:
+   { _id: 59c9c6f0aa325777977207b6,
+     name: 'Shane',
+     age: 33,
+     location: 'Charlotte' },
+  ok: 1 }
+^C
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	playground/mongodb-update.js
+
+nothing added to commit but untracked files present (use "git add" to track)
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : git add .
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : git commit -m "added findOneAndUpdate"
+[master a56a28a] added findOneAndUpdate
+ 1 file changed, 38 insertions(+)
+ create mode 100644 playground/mongodb-update.js
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : git push -u origin master
+Counting objects: 4, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 774 bytes | 0 bytes/s, done.
+Total 4 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/s-darcy/node-course-todo-api.git
+   61245a2..a56a28a  master -> master
+Branch master set up to track remote branch master from origin.
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : npm i
+npm WARN todo-api@1.0.0 No description
+npm WARN todo-api@1.0.0 No repository field.
+
+up to date in 0.165s
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) :
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) : npm i mongoose@4.5.9 --save
+npm WARN deprecated mongodb@2.1.18: Please upgrade to 2.2.19 or higher
+npm WARN todo-api@1.0.0 No description
+npm WARN todo-api@1.0.0 No repository field.
+
++ mongoose@4.5.9
+added 17 packages in 3.201s
+rv-clt-sdarcy [sdarcy] ~/Desktop/node-todo-api (master) :
