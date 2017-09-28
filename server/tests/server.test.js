@@ -13,11 +13,11 @@ const todos = [{
     text: 'Second test todo'
 }];
 
-beforeEach((done) => {
-    Todo.remove({}).then(() => {
-        return Todo.insertMany(todos);
-    }).then(() => done());
-});
+// beforeEach((done) => {
+//     Todo.remove({}).then(() => {
+//         return Todo.insertMany(todos);
+//     }).then(() => done());
+// });
 
 describe('POST /todos', () => {
     it('should create a new todo', (done) => {
@@ -95,6 +95,47 @@ describe('GET /todos/:id', () => {
     it('should return 404 for non-object ids', (done) => {
         request(app)
         .get('/todos/123abc')
+        .expect(404)
+        .end(done);
+    });
+});
+
+describe('DELETE /todos/:id', () => {
+    it('should remove a todo', (done) => {
+        var hexId = todos[1]._id.toHexString();
+
+        request(app)
+        .delete(`/todos/${hexId}`)
+        .expect(200)
+        .expect((res) => {
+            expect(res.body.todo._id).toBe(hexId);
+        })
+        .end((err, res) => {
+            if (err) {
+                return done (err);
+            }
+            // query database using findById. You can make sure that something does not exist with the toNotExist assertion
+            Todo.findById(hexId).then((todo) => {
+                //expect(null).toNotExist
+                expect(todo).toNotExist();
+                done();
+            //add catch clause
+            }).catch((e) => done(e));
+        });
+    });
+
+    it('should return 404 if todo not found', (done) => {
+        var hexID = new ObjectID().toHexString();
+        
+        request(app)
+        .delete(`/todos/${hexID}`)
+        .expect(404)
+        .end(done);  
+    });
+
+    it('should return 404 if onject id is invalid', (done) => {
+        request(app)
+        .delete('/todos/123abc')
         .expect(404)
         .end(done);
     });
